@@ -2,9 +2,7 @@
 <html lang="en">
 <head>
 	<title>SFRent Dashboard</title>
-	<!-- <link href="http://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.1.1/css/bootstrap.css" rel="stylesheet"> -->
 	<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-	
 </head>
 	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min.js" type="text/javascript"></script>
@@ -12,7 +10,92 @@
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
 <body>
 	<div class="container">
-		<button class="btn btn-info">Test</button>
+		<h1>SFRENT DASHBOARD</h1>
+		<hr>
+		<div class="page"></div>
 	</div>
+
+	<script type="text/template"id="user-list-template">
+	<hr>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th>Building</th>
+				<th>Unit</th>
+				<th>Apartment Type</th>
+				<th>Square ft.</th>
+				<th>Rate</th>
+				<th>Prev Rent</th>
+				<th>Vacancy date</th>
+				<th>Per Square ft.</th>
+				<th>Est. move out date</th>
+				<th>Photos</th>
+				<th>Make ready Completed date</th>
+				<th>Recent check_in</th>
+				<th>Move Out Status</th>
+			</tr>
+		</thead>
+		<tbody>
+			<% _.each(users, function(user) { %>
+				<tr>
+					<td><%= user.get('short_name') %></td>
+					<td><%= user.get('unit_number') %></td>
+					<td><%= user.get('building_apartment_size') %></td>
+					<td><%= user.get('dimension') %></td>
+					<td><%= user.get('rent') %></td>
+					<td><%= user.get('prev_rent') %></td>
+					<td><%= user.get('move_out_requested_date') %></td>
+					<td><%= user.get('active_building_apartment_photos') %></td>
+					<td><%= user.get('make_ready_completed_date') %></td>
+					<td><%= user.get('most_recent_move_in') %></td>
+					<td><%= user.get('move_out_status') %></td>
+				</tr>
+			<% }); %>
+		</tbody>
+	</table>
+	</script>
+	<script>
+
+		$.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
+  			options.url = 'https://dev.sfrent.net' + options.url;
+		});
+
+		var Users = Backbone.Collection.extend({
+			url: '/get_move_outs?status=pending'
+		});
+		var User = Backbone.Model.extend({
+			urlRoot: '/get_move_outs?status=pending'
+		});
+
+		var UserList = Backbone.View.extend({
+			el : '.page',
+			render: function()	{
+				var that = this;
+				var users = new Users();
+				users.fetch({
+					success: function(users)	{
+						var template = _.template($('#user-list-template').html(),{users: users.models});
+						that.$el.html(template);
+					}
+				})
+			}
+		});
+
+		var Router = Backbone.Router.extend({
+			routes: {
+				'': 'home'
+			}
+		});
+
+		var userList = new UserList();
+
+		var router = new Router();
+		router.on('route:home', function(){
+			userList.render();
+		});
+
+		Backbone.history.start();
+
+	</script>
 </body>
 </html>
