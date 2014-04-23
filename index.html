@@ -55,16 +55,16 @@
 	</table>
 	</script>
 	<script>
-
-		$.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
-  			options.url = 'https://dev.sfrent.net' + options.url;
-		});
+	Backbone.emulateHTTP = true;
+		// $.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
+  // 			options.url = 'get_move_outs.json'
+		// });
 
 		var Users = Backbone.Collection.extend({
-			url: '/get_move_outs?status=pending'
+			url: 'get_move_outs.json'
 		});
 		var User = Backbone.Model.extend({
-			urlRoot: '/get_move_outs?status=pending'
+			url: 'get_move_outs.json'
 		});
 
 		var UserList = Backbone.View.extend({
@@ -96,6 +96,6 @@
 
 		Backbone.history.start();
 
-	</script>
+	// </script>
 </body>
 </html>
