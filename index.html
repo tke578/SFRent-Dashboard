@@ -8,6 +8,7 @@
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min.js" type="text/javascript"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"></script>
 	<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+	<script src="http://cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/moment.min.js"></script>
 <body>
 	<div class="container">
 		<h1>SFRENT DASHBOARD</h1>
@@ -26,6 +27,7 @@
 				<th>Square ft.</th>
 				<th>Rate</th>
 				<th>Prev Rent</th>
+				<th>Rent difference</th>
 				<th>Vacancy date</th>
 				<th>Per Square ft.</th>
 				<th>Est. move out date</th>
@@ -41,15 +43,16 @@
 					<td><%= user.get('short_name') %></td>
 					<td><%= user.get('unit_number') %></td>
 					<td><%= user.get('building_apartment_size') %></td>
-					<td><%= user.get('dimension') == null ? "None given" : user.get('dimension') %></td>
-					<td><%= user.get('rent') %></td>
-					<td><%= user.get('prev_rent') %></td>
-					<td><%= user.get('move_out_requested_date') %></td>
-					<td><%= Math.round(user.get('rent_per_dimension')*100)/100 %></td>
-					<td><%= user.get('estimated_move_out_date') %></td>
+					<td><%= user.get('dimension') == null ? "None Given" : Math.round(user.get('dimension')) %></td>
+					<td><%= Math.round(user.get('rent')) %></td>
+					<td><%= Math.round(user.get('prev_rent')) %></td>
+					<td><%= Math.round(user.get('rent') - user.get('prev_rent')) %></td>
+					<td><%= user.get('move_out_requested_date').slice(6,9) + user.get('move_out_requested_date').slice(9,11)+"-" + user.get('move_out_requested_date').slice(1,5)%></td>
+					<td><%= Math.round(user.get('rent_per_dimension')) %></td>
+					<td><%= user.get('estimated_move_out_date').slice(6,9)+user.get('estimated_move_out_date').slice(9,11)+"-"+user.get('estimated_move_out_date').slice(1,5) %></td>
 					<td><%= user.get('active_building_apartment_photos') %></td>
-					<td><%= user.get('make_ready_completed_date').length === 0 ? "No date scheduled" : user.get('estimated_move_out_date') %></td>
-					<td><%= user.get('most_recent_move_in') %></td>
+					<td><%= user.get('make_ready_completed_date').length === 0 ? "No date scheduled" : user.get('make_ready_completed_date').slice(6,9) + user.get('make_ready_completed_date').slice(9,11) + "-" +user.get('estimated_move_out_date').slice(1,5) %></td>
+					<td><%= user.get('most_recent_move_in').length === 0 ? "No date scheduled" : user.get('most_recent_move_in').slice(6,9) + user.get('most_recent_move_in').slice(9,11) + "-" +user.get('most_recent_move_in').slice(1,5) %></td>
 					<td><%= user.get('move_out_status') %></td>
 				</tr>
 			<% }); %>
@@ -58,16 +61,15 @@
 	<hr>
 	</script>
 	<script>
-	Backbone.emulateHTTP = true;
-		// $.ajaxPrefilter( function( options, originalOptions, jqXHR ) {
-  // 			options.url = 'get_move_outs.json'
-		// });
+	
+
+		var updateInterval = 15000;
 
 		var Users = Backbone.Collection.extend({
-			url: 'get_move_outs.json'
+			url: 'https://dev.sfrent.net/api/move_outs/get_move_outs?status=pending'
 		});
 		var User = Backbone.Model.extend({
-			url: 'get_move_outs.json'
+			url: 'https://dev.sfrent.net/api/move_outs/get_move_outs?status=pending'
 		});
 
 		var UserList = Backbone.View.extend({
@@ -84,20 +86,18 @@
 			}
 		});
 
-		var Router = Backbone.Router.extend({
-			routes: {
-				'': 'home'
-			}
-		});
-
 		var userList = new UserList();
 
-		var router = new Router();
-		router.on('route:home', function(){
+		//doc rdy
+		$(function(){
 			userList.render();
+
+			setInterval(function(){
+				userList.render();
+			},updateInterval);
+
 		});
 
-		Backbone.history.start();
 
 	// </script>
 </body>
