@@ -16,7 +16,7 @@
 	</div>
 
 	<script type="text/template"id="user-list-template">
-	<hr>
+	
 	<table class="table table-striped">
 		<thead>
 			<tr>
@@ -41,18 +41,21 @@
 					<td><%= user.get('short_name') %></td>
 					<td><%= user.get('unit_number') %></td>
 					<td><%= user.get('building_apartment_size') %></td>
-					<td><%= user.get('dimension') %></td>
+					<td><%= user.get('dimension') == null ? "None given" : user.get('dimension') %></td>
 					<td><%= user.get('rent') %></td>
 					<td><%= user.get('prev_rent') %></td>
 					<td><%= user.get('move_out_requested_date') %></td>
+					<td><%= Math.round(user.get('rent_per_dimension')*100)/100 %></td>
+					<td><%= user.get('estimated_move_out_date') %></td>
 					<td><%= user.get('active_building_apartment_photos') %></td>
-					<td><%= user.get('make_ready_completed_date') %></td>
+					<td><%= user.get('make_ready_completed_date').length === 0 ? "No date scheduled" : user.get('estimated_move_out_date') %></td>
 					<td><%= user.get('most_recent_move_in') %></td>
 					<td><%= user.get('move_out_status') %></td>
 				</tr>
 			<% }); %>
 		</tbody>
 	</table>
+	<hr>
 	</script>
 	<script>
 	Backbone.emulateHTTP = true;
