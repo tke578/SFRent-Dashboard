@@ -61,10 +61,10 @@
 		// });
 
 		var Users = Backbone.Collection.extend({
-			url: 'get_move_outs.json'
+			url: 'https://dev.sfrent.net/api/move_outs/get_move_outs?status=pending'
 		});
 		var User = Backbone.Model.extend({
-			url: 'get_move_outs.json'
+			url: 'https://dev.sfrent.net/api/move_outs/get_move_outs?status=pending'
 		});
 
 		var UserList = Backbone.View.extend({
