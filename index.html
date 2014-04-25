@@ -2,70 +2,79 @@
 <html lang="en">
 	<head>
 		<title>Sfrent Dashboard</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<!-- <meta name="viewport" content="width=device-width, initial-scale=1"> -->
 		<link rel="stylesheet" type="text/css" href="custom_css/custom_css.css">
 		<link rel="stylesheet" type="text/css" href="bootstrap_3.1/css/bootstrap.min.css">
 		<link rel="stylesheet" href="font-awesome-4.0.3/css/font-awesome.min.css">
 		<!-- <link rel="shortcut icon" type="image/png" href="sfrent-logo.png"/> -->
 		<link rel="shortcut icon" href="sfrent.ico">
 	</head>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.2/underscore-min.js" type="text/javascript"></script>
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.2/backbone-min.js"></script>
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	
 	<body>
-		<h1 style="text-align:center; margin-top:0px;"><span class="glyphicon glyphicon-log-in" style="height:30px;"></span> UPCOMING</h1>
+		<h2 style="text-align:center; margin-top:0px;"><span class="glyphicon glyphicon-log-in" style="height:30px;"></span> UPCOMING</h2>
 		<div class="page"></div>
-		<script type="text/template"id="user-list-template">
-			<section style="margin-top:80px;" width="100%" id="table-section">
+	</div>
 
+		<script type="text/template"id="user-list-template">
+		<section style="margin-top:80px;" width="100%" id="table-section">
 				<table width="98%"class="table-header-rotated" style="margin-top:-85px; margin-left:0px;">
 				    <thead>
-				    	<!-- <tr>
-				    		<th style="text-align:center; padding-bottom:-30px; height:60px; font-size:250%; padding-left:575px; color: #222;
-								text-shadow: 0px 2px 3px #555;" colspan="10"><span class="glyphicon glyphicon-log-in">
-								</span> UPCOMING
-							</th>
-				    	</tr> -->
-				      	<tr>
-					        <!-- First column header is not rotated -->
+				      	<tr> 
 					        <th width="1%"></th>
-					        <!-- Following headers are rotated -->
 							<th class="rotate-45"><div style="background-color: rgba(51,51,51,0.25);"><span style="left:10px;">Building</span></div></th>
-							<th class="rotate-45"><div><span style="left:-10px;">Unit #</span></div></th>
-							<th class="rotate-45"><div style="background-color: rgba(51,51,51,0.25);"><span style="left:40px; bottom:10px;">Type of Unit</span></div></th>
-							<th class="rotate-45"><div><span style="left:-5px; bottom:15px;">Square-ft.</span></div></th>
+							<th class="rotate-45"><div><span style="left:-20px;">Unit #</span></div></th>
+							<th class="rotate-45"><div style="background-color: rgba(51,51,51,0.25);"><span style="left:15px; bottom:10px;">Type of Unit</span></div></th>
+							<th class="rotate-45"><div><span style="left:-25px; bottom:15px;">Square-ft.</span></div></th>
 							<th class="rotate-45"><div style="background-color: rgba(51,51,51,0.25);"><span style="left:-5px;">Rent</span></div></th>
-							<th class="rotate-45"><div><span style="left:5px; bottom:15px;">Prev. Rent</span></div></th><th class="rotate-45"><div style="background-color: rgba(51,51,51,0.25);"><span style="left:15px; bottom:10px;">Rent diff</span></div></th>
-							// <th class="rotate-45"><div><span style="left:10px;">30day Notice?</span></div></th>
-							<th class="rotate-45"><div style="background-color: rgba(51,51,51,0.25);"><span style="left:-10px; ">Photos</span></div></th>
-							<th class="rotate-45"><div width="100%"><span style="left:5px; bottom:15px;">Vacancy Date</span></div></th>
-							<th class="rotate-45"><div style="background-color: rgba(51,51,51,0.25);"><span style="left:10px;">RTR</span></div></th>
-							<th class="rotate-45"><div><span style="left:40px;">App. status</span></div></th>
-							<th class="rotate-45"><div style="background-color: rgba(51,51,51,0.25);"><span style="left:5px; bottom:15px;">Move_Date</span></div></th>
+							<th class="rotate-45"><div><span style="left:-15px; bottom:15px;">Prev. Rent</span></div></th><th class="rotate-45"><div style="background-color: rgba(51,51,51,0.25);"><span style="left:-15px; bottom:10px;">Rent diff</span></div></th>
+						
+							<th class="rotate-45"><div><span style="left:-10px;">Photos</span></div></th>
+							<th class="rotate-45"><div style="background-color: rgba(51,51,51,0.25);"width="100%"><span style="left:5px; bottom:15px;">Vacancy Date</span></div></th>
+							<th class="rotate-45"><div><span style="left:10px;">RTR</span></div></th>
+							<th class="rotate-45"><div style="background-color: rgba(51,51,51,0.25);"><span style="left:40px; ">Status</span></div></th>
+							<th class="rotate-45"><div><span style="left:5px; bottom:15px;">Move in date</span></div></th>
 				      	</tr>
 				    </thead>
 				    <tbody>
-					    <% _.each(users, function(user) { %>
-						    <tr class="highligted-row ">
-						    	<th></th>
-						        <td><button type="button" class="btn btn-primary btn-lg"><strong><%= user.get('short_name') %></strong></button></td>
+					    <% _.each(users, function(user, i) { %>
+						    <tr class="highligted-row <%= user.get('short_name') %>">
+						    	<th> </th>
+						        <td>
+						       		<button type="button" class="btn btn-primary btn-lg btn-bldg">
+						        		<strong><%= user.get('short_name') %></strong>
+						        	</button>
+						        </td>
 						        <td><%= user.get('unit_number') %></td>
 						        <td><%= user.get('building_apartment_size') %></td>
-						        <td><%= user.get('dimension') == null ? "None Given" : Math.round(user.get('dimension')) %></td>
-						        <td><strong class="color-green">%= Math.round(user.get('rent')) %></strong></td>
+						        <td><%= user.get('dimension') == null ? "N/A" : Math.round(user.get('dimension')) %></td>
+						        <td><strong class="color-green"><%= Math.round(user.get('rent')) %></strong></td>
 						        <td><strong style="color: rgb(133, 123, 123);"><%= Math.round(user.get('prev_rent')) %></strong></td>
-						        <td><strong style="color: rgb(30, 228, 78);"><%= Math.round(user.get('rent') - user.get('prev_rent')) %></strong></td>
-						        // <td><button type="button" class="btn btn-danger btn-lg"><i class="fa fa-exclamation-triangle"></i> No</button></td>
+						        <td>
+						        	<% if(Math.round(user.get('rent') - user.get('prev_rent')) >=0) { %>
+						        		<strong style="color: rgb(30, 228, 78);"><%= Math.round(user.get('rent') - user.get('prev_rent')) %></strong>
+						        	<% } else { %>
+						        	 	<strong style="color: rgb(253, 24, 24)"><%= Math.round(user.get('rent') - user.get('prev_rent')) %></strong>
+						        	<% } %>
+						        </td>
 						        <td><button type="button" class="btn btn-success btn-lg"><%= user.get('active_building_apartment_photos') %></button></td>
 						        <td><%= user.get('estimated_move_out_date').slice(6,9)+user.get('estimated_move_out_date').slice(9,11)+"-"+user.get('estimated_move_out_date').slice(1,5) %></td>
-						        <td><button type="button" class="btn btn-danger btn-lg"><i class="fa fa-exclamation-triangle"></i> No</button></td>
-						        <td><button type="button" class="btn btn-success btn-lg"><i class="fa fa-check-square-o"></i> Submitted</button></td>
-								<td><%= user.get('make_ready_completed_date').length === 0 ? "No date scheduled" : user.get('make_ready_completed_date').slice(6,9) + user.get('make_ready_completed_date').slice(9,11) + "-" +user.get('estimated_move_out_date').slice(1,5) %></td>
+						        <td>
+						        	<% if(user.get('move_out_requested_date').length == 0) { %>
+						        		<button type="button" class="btn btn-danger btn-lg"><i class="fa fa-exclamation-triangle"></i>No</button>
+						        	<% } else { %>
+						        		<%= user.get('move_out_requested_date').slice(6,9) + user.get('move_out_requested_date').slice(9,11)+"-" + user.get('move_out_requested_date').slice(1,5) %>
+						        	<% } %>
+						        </td>
+						        <td><button type="button" class="btn btn-success btn-lg"><i class="fa fa-check-square-o"></i> <%= user.get('move_out_status') %></button></td>
+								<td><%= user.get('make_ready_completed_date').length === 0 ? "N/A" : user.get('make_ready_completed_date').slice(6,9) + user.get('make_ready_completed_date').slice(9,11) + "-" +user.get('estimated_move_out_date').slice(1,5) %></td>
 						    </tr>
 					      <% }); %>
 				    </tbody>
 				</table>
-				<img  style="position:fixed; position:absolute; right:0px; bottom:15px;"src="sfrent-logo.png">
+				<img  style="position:fixed; right:0px; bottom:15px;"src="sfrent-logo.png">
 			</section>
 		</script>
 		<script>
@@ -100,9 +109,9 @@
 			$(function(){
 				userList.render();
 
-				setInterval(function(){
-					userList.render();
-				},updateInterval);
+				// setInterval(function(){
+				// 	userList.render();
+				// },updateInterval);
 
 			});
 

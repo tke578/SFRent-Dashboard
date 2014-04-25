@@ -1,11 +1,13 @@
 body {
   background-image:url(images/background_image.PNG);
+  background-size: cover;
+  
 }
 
 #table-section{
   background-color: rgba(66, 57, 57, 0.4);
   
-  height:1050px;
+  /*height:1050px;*/
 }
 
 /*.header-title th{
@@ -40,7 +42,7 @@ strong {
 .color-green {
   color: #56bc76;
 }
-.highligted-row td{
+.table-header-rotated tbody tr:nth-child(odd){
   background-color: rgba(51,51,51,0.25);
 }
 
@@ -61,7 +63,7 @@ strong {
   top: 0px;
   left: 45px; /* 80 * tan(45) / 2 = 40 where 80 is the height on the cell and 45 is the transform angle*/
   height: 87%;
- 
+  width: 77%;
   -ms-transform:skew(-45deg,0deg);
   -moz-transform:skew(-45deg,0deg);
   -webkit-transform:skew(-45deg,0deg);
@@ -72,6 +74,9 @@ strong {
   border-right: 1px groove #dddddd;
   border-top: 1px groove #dddddd;*/
 }
+/*.table-header-rotated th.rotate-45:nth-child(1){
+  width: 50%;
+}*/
 
 .table-header-rotated th.rotate-45 span {
   -ms-transform:skew(45deg,0deg) rotate(315deg);
@@ -90,3 +95,14 @@ strong {
   color:#222;
   // white-space: nowrap; /*whether to display in one line or not*/
 }
+
+
+/*tr.highligted-row.PC:nth-child(odd) {
+background-color: red;
+}
+.table-header-rotated tbody tr:nth-child(odd) {
+background-color: rgba(51,51,51,0.25);
+}
+tr.highligted-row.PC {
+background-color: red;
+}*/
