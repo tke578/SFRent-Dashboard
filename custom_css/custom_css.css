@@ -1,11 +1,10 @@
 body {
   background-image:url(images/background_image.PNG);
   background-size: cover;
-  
 }
 
 #table-section{
-  background-color: rgba(66, 57, 57, 0.4);
+  /*background-color: rgba(66, 57, 57, 0.4);*/
   
   /*height:1050px;*/
 }
@@ -42,8 +41,71 @@ strong {
 .color-green {
   color: #56bc76;
 }
-.table-header-rotated tbody tr:nth-child(odd){
+/*.table-header-rotated tbody tr:nth-child(odd){
   background-color: rgba(51,51,51,0.25);
+}*/
+tr.highligted-row.PC:nth-child(even) {
+background-color: rgb(49, 42, 42);
+}
+tr.highligted-row.PC:nth-child(odd) {
+background-color: rgb(49, 42, 42);
+opacity:0.5;
+}
+tr.highligted-row.RAY:nth-child(even) {
+background-color: rgb(17, 89, 196);
+}
+tr.highligted-row.RAY:nth-child(odd) {
+background-color: rgb(17, 89, 196);
+opacity:0.5;
+}
+tr.highligted-row.RD:nth-child(even) {
+background-color: rgb(13, 139, 129);
+}
+tr.highligted-row.RD:nth-child(odd) {
+background-color: rgb(13, 139, 129);
+opacity:0.5;
+}
+tr.highligted-row.JONES:nth-child(even) {
+background-color: rgb(134, 138, 37);
+}
+tr.highligted-row.JONES:nth-child(odd) {
+background-color: rgb(134, 138, 37);
+opacity:0.5;
+}
+tr.highligted-row.PINEC:nth-child(even) {
+background-color: rgb(34, 26, 128);
+}
+tr.highligted-row.PINEC:nth-child(odd) {
+background-color: rgb(34, 26, 128);
+opacity:0.5;
+}
+tr.highligted-row.NHA:nth-child(even) {
+background-color: rgb(128, 99, 26);
+}
+tr.highligted-row.NHA:nth-child(odd) {
+background-color: rgb(128, 99, 26);
+opacity:0.5;
+}
+tr.highligted-row.SFT:nth-child(even) {
+background-color: rgb(17, 9, 36);
+}
+tr.highligted-row.SFT:nth-child(odd) {
+background-color: rgb(17, 9, 36);
+opacity:0.5;
+}
+tr.highligted-row.JEKYLL:nth-child(even) {
+background-color: rgb(164, 11, 177);
+}
+tr.highligted-row.JEKYLL:nth-child(odd) {
+background-color: rgb(164, 11, 177);
+opacity:0.5;
+}
+tr.highligted-row.FAIR:nth-child(even) {
+background-color: rgb(43, 87, 32);
+}
+tr.highligted-row.FAIR:nth-child(odd) {
+background-color: rgb(43, 87, 32);
+opacity:0.5;
 }
 
 .table-header-rotated th.rotate-45{
@@ -97,10 +159,8 @@ strong {
 }
 
 
-/*tr.highligted-row.PC:nth-child(odd) {
-background-color: red;
-}
-.table-header-rotated tbody tr:nth-child(odd) {
+
+/*.table-header-rotated tbody tr:nth-child(odd) {
 background-color: rgba(51,51,51,0.25);
 }
 tr.highligted-row.PC {
