@@ -4,7 +4,8 @@ body {
 }
 
 #table-section{
-  /*background-color: rgba(66, 57, 57, 0.4);*/
+  background-color: rgba(66, 57, 57, 0.4);
+  margin-left: 8px;
   
   /*height:1050px;*/
 }
@@ -49,63 +50,95 @@ background-color: rgb(49, 42, 42);
 }
 tr.highligted-row.PC:nth-child(odd) {
 background-color: rgb(49, 42, 42);
-opacity:0.5;
+opacity:0.6;
+}
+tr.highligted-row.PC  .btn-bldg{
+  background-color: black;
+  border-color: black;
 }
 tr.highligted-row.RAY:nth-child(even) {
 background-color: rgb(17, 89, 196);
 }
 tr.highligted-row.RAY:nth-child(odd) {
 background-color: rgb(17, 89, 196);
-opacity:0.5;
+opacity:0.6;
 }
 tr.highligted-row.RD:nth-child(even) {
 background-color: rgb(13, 139, 129);
 }
 tr.highligted-row.RD:nth-child(odd) {
 background-color: rgb(13, 139, 129);
-opacity:0.5;
+opacity:0.6;
+}
+tr.highligted-row.RD  .btn-bldg{
+  background-color: rgb(29, 202, 189);
+  border-color: rgb(29, 202, 189);
 }
 tr.highligted-row.JONES:nth-child(even) {
 background-color: rgb(134, 138, 37);
 }
 tr.highligted-row.JONES:nth-child(odd) {
 background-color: rgb(134, 138, 37);
-opacity:0.5;
+opacity:0.6;
+}
+tr.highligted-row.JONES  .btn-bldg{
+  background-color: rgb(197, 204, 26);
+  border-color: rgb(197, 204, 26);
 }
 tr.highligted-row.PINEC:nth-child(even) {
 background-color: rgb(34, 26, 128);
 }
 tr.highligted-row.PINEC:nth-child(odd) {
 background-color: rgb(34, 26, 128);
-opacity:0.5;
+opacity:0.6;
+}
+tr.highligted-row.PINEC  .btn-bldg{
+  background-color: rgb(56, 45, 195);
+  border-color: rgb(20, 10, 138);
 }
 tr.highligted-row.NHA:nth-child(even) {
 background-color: rgb(128, 99, 26);
 }
 tr.highligted-row.NHA:nth-child(odd) {
 background-color: rgb(128, 99, 26);
-opacity:0.5;
+opacity:0.6;
+}
+tr.highligted-row.NHA .btn-bldg{
+  background-color: rgb(221, 230, 26);
+  border-color: rgb(221, 230, 26);
 }
 tr.highligted-row.SFT:nth-child(even) {
 background-color: rgb(17, 9, 36);
 }
 tr.highligted-row.SFT:nth-child(odd) {
 background-color: rgb(17, 9, 36);
-opacity:0.5;
+opacity:0.6;
+}
+tr.highligted-row.SFT .btn-bldg{
+  background-color: rgb(71, 71, 62);
+  border-color: rgb(71, 71, 62);
 }
 tr.highligted-row.JEKYLL:nth-child(even) {
 background-color: rgb(164, 11, 177);
 }
 tr.highligted-row.JEKYLL:nth-child(odd) {
 background-color: rgb(164, 11, 177);
-opacity:0.5;
+opacity:0.6;
+}
+tr.highligted-row.JEKYLL .btn-bldg{
+  background-color: rgb(193, 58, 204);
+  border-color: rgb(168, 37, 158);
 }
 tr.highligted-row.FAIR:nth-child(even) {
 background-color: rgb(43, 87, 32);
 }
 tr.highligted-row.FAIR:nth-child(odd) {
 background-color: rgb(43, 87, 32);
-opacity:0.5;
+opacity:0.6;
+}
+tr.highligted-row.FAIR .btn-bldg{
+  background-color: rgb(81, 204, 58);
+  border-color: rgb(57, 163, 37);
 }
 
 .table-header-rotated th.rotate-45{
