@@ -25,7 +25,7 @@
 				        <th width="1%"></th>
 						<th class="rotate-45">
 							<div style="background-color: rgb(15,15,15);">
-								<span style="left:50px; bottom:42px;">Building</span>
+								<span style="left:10px; bottom:42px;">Building</span>
 							</div>
 						</th>
 						<th class="rotate-45">
@@ -35,7 +35,7 @@
 						</th>
 						<th class="rotate-45">
 							<div style="background-color: rgb(15,15,15);">
-								<span style="left:5px; bottom:15px;">Type of Unit</span>
+								<span style="left:25px; bottom:15px;">Type of Unit</span>
 							</div>
 						</th>
 						<th class="rotate-45">
@@ -45,7 +45,7 @@
 						</th>
 						<th class="rotate-45">
 							<div style="background-color: rgb(15,15,15);">
-								<span style="left:-15px; bottom:25px;">Rent</span>
+								<span style="left:-5px; bottom:25px;">Rent</span>
 							</div>
 						</th>
 						<th class="rotate-45">
@@ -65,12 +65,12 @@
 						</th>
 						<th class="rotate-45">
 							<div style="background-color: rgb(15,15,15);">
-								<span style="left:50px; bottom:25px;">Vacancy Date</span>
+								<span style="left:-5px; bottom:25px;">Vacancy Date</span>
 							</div>
 						</th>
 						<th class="rotate-45">
 							<div>
-								<span style="left:50px; bottom:30px;">RTR</span>
+								<span style="left:-15px; bottom:30px;">RTR</span>
 							</div>
 						</th>
 						<th class="rotate-45">
@@ -80,7 +80,7 @@
 						</th>
 						<th class="rotate-45">
 							<div>
-								<span style="left:15px; bottom:25px;">Move in date</span>
+								<span style="left:-15px; bottom:25px;">Move in date</span>
 							</div>
 						</th>
 			      	</tr>
@@ -126,11 +126,15 @@
 					        	<% } %>
 					        </td>
 					        <td>
-					        	<button type="button" class="btn btn-opaque btn-lg"><%= user.get('estimated_move_out_date').slice(6,9)+user.get('estimated_move_out_date').slice(9,11) %></button>
+					        	<% if(user.get('estimated_move_out_date').length == 0) { %>
+					        		<button type="button" class="btn btn-danger btn-lg"><i class="fa fa-exclamation-triangle"></i> N/A</button>
+					        	<% } else { %>
+					        		<button type="button" class="btn btn-opaque btn-lg"><%= user.get('estimated_move_out_date').slice(6,9) + user.get('estimated_move_out_date').slice(9,11) %></button>
+					        	<% } %>
 					        </td>
 					        <td>
 					        	<% if(user.get('move_out_requested_date').length == 0) { %>
-					        		<button type="button" class="btn btn-danger btn-lg"><i class="fa fa-exclamation-triangle"></i>No</button>
+					        		<button type="button" class="btn btn-danger btn-lg"><i class="fa fa-exclamation-triangle"></i> N/A</button>
 					        	<% } else { %>
 					        		<button	type="button" class="btn btn-opaque btn-lg"><%= user.get('move_out_requested_date').slice(6,9) + user.get('move_out_requested_date').slice(9,11) %></button>
 					        	<% } %>

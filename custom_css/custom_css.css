@@ -5,7 +5,7 @@ body {
 
 #table-section{
   background-color: rgb(66, 57, 57);
-  /*margin-left: 15px;*/
+  margin-left: -25px;
   /*height:1050px;*/
 }
 
@@ -53,6 +53,16 @@ tr.highligted-row.PC:nth-child(odd) {
 tr.highligted-row.PC  .btn-bldg{
   background-color: black;
   border-color: black;
+}
+tr.highligted-row.OF:nth-child(even) {
+  background-color: rgb(119, 106, 106);
+}
+tr.highligted-row.OF:nth-child(odd) {
+  background-color: rgba(99, 95, 95, 0.7);
+}
+tr.highligted-row.OF .btn-bldg{
+  background-color: gray;
+  border-color: gray;
 }
 tr.highligted-row.RAY:nth-child(even) {
 background-color: rgb(46, 17, 196);
