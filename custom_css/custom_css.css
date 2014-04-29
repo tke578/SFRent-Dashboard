@@ -4,7 +4,7 @@ body {
 }
 
 #table-section{
-  background-color: rgba(66, 57, 57, 0.7);
+  background-color: rgb(66, 57, 57);
   /*margin-left: 15px;*/
   
   /*height:1050px;*/
@@ -18,7 +18,7 @@ body {
 }*/
 
 tr.highligted-row.RAY:nth-child(odd) {
-background-color: rgba(17, 89, 196, 0.5);
+background-color: rgba(29, 18, 18, 0.7);
 /* opacity: 0.7; */
 }
 .table-header-rotated td{
@@ -49,17 +49,17 @@ tr.highligted-row.PC:nth-child(even) {
   background-color: rgb(49, 42, 42);
 }
 tr.highligted-row.PC:nth-child(odd) {
-  background-color: rgba(49, 42, 42,0.7);
+  background-color: rgba(20, 19, 19, 0.7);
 }
 tr.highligted-row.PC  .btn-bldg{
   background-color: black;
   border-color: black;
 }
 tr.highligted-row.RAY:nth-child(even) {
-background-color: rgb(17, 89, 196);
+background-color: rgb(46, 17, 196);
 }
 tr.highligted-row.RAY:nth-child(odd) {
-  background-color: rgb(1, 64, 156);
+  background-color: rgb(17, 108, 241);
 }
 tr.highligted-row.RD:nth-child(even) {
   background-color: rgb(13, 139, 129);
@@ -75,7 +75,7 @@ tr.highligted-row.JONES:nth-child(even) {
   background-color: rgb(134, 138, 37);
 }
 tr.highligted-row.JONES:nth-child(odd) {
-  background-color: rgba(134, 138, 37,0.7);
+  background-color: rgba(134, 138, 37,0.4);
 }
 tr.highligted-row.JONES  .btn-bldg{
   background-color: rgb(197, 204, 26);
@@ -85,7 +85,7 @@ tr.highligted-row.PINEC:nth-child(even) {
   background-color: rgb(34, 26, 128);
 }
 tr.highligted-row.PINEC:nth-child(odd) {
-  background-color: rgba(34, 26, 128,0.7);
+  background-color: rgba(39, 22, 243, 0.7);
 }
 tr.highligted-row.PINEC  .btn-bldg{
   background-color: rgb(56, 45, 195);
@@ -95,20 +95,20 @@ tr.highligted-row.NHA:nth-child(even) {
   background-color: rgb(128, 99, 26);
 }
 tr.highligted-row.NHA:nth-child(odd) {
-  background-color: rgba(128, 99, 26,0.7);
+  background-color: rgba(128, 99, 26,0.3);
 }
 tr.highligted-row.NHA .btn-bldg{
   background-color: rgb(221, 230, 26);
   border-color: rgb(221, 230, 26);
 }
 tr.highligted-row.SFT:nth-child(even) {
-  background-color: rgb(17, 9, 36);
+  background-color: rgb(88, 54, 170);
 }
 tr.highligted-row.SFT:nth-child(odd) {
-  background-color: rgba(17, 9, 36,0.7);
+  background-color: rgba(74, 41, 153, 0.7);
 }
 tr.highligted-row.SFT .btn-bldg{
-  background-color: rgb(71, 71, 62);
+  background-color: rgb(85, 79, 155);
   border-color: rgb(71, 71, 62);
 }
 tr.highligted-row.JEKYLL:nth-child(even) {
@@ -128,8 +128,8 @@ tr.highligted-row.FAIR:nth-child(odd) {
   background-color: rgb(43, 87, 32,0.7);
 }
 tr.highligted-row.FAIR .btn-bldg{
-  background-color: rgb(81, 204, 58);
-  border-color: rgb(57, 163, 37);
+  background-color: rgb(112, 131, 109);
+  border-color: rgb(70, 117, 62);
 }
 
 .table-header-rotated th.rotate-45{
@@ -145,9 +145,10 @@ tr.highligted-row.FAIR .btn-bldg{
 }
 
 button.btn.btn-opaque {
-  background-color: rgba(1,1,1,0.2);
+  background-color: rgba(1,1,1,0.5);
   color: #fff;
-  border-color: rgba(1,1,1,0.2);
+  font-size: 23px;
+  border-color: rgba(1,1,1,0.5);
 }
 
 .table-header-rotated th.rotate-45 > div{
@@ -183,8 +184,10 @@ button.btn.btn-opaque {
   // width: 100%;
   width: 115px; /* 80 / cos(45) - 40 cos (45) = 85 where 80 is the height of the cell, 40 the width of the cell and 45 the transform angle*/
   text-align: center;
-  font-size: 27px;
-  color:#222;
+  font-size: 30px;
+  color: white;
+  font-style: oblique;
+  font-weight: bold;
   line-height: 25px;
   // white-space: nowrap; /*whether to display in one line or not*/
 }
