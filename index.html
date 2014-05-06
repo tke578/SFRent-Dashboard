@@ -156,10 +156,10 @@
 			var updateInterval = 50000;
 
 			var Users = Backbone.Collection.extend({
-				url: 'https://dev.sfrent.net/api/move_outs/get_move_outs?status=complete'
+				url: 'https://dev.sfrent.net/api/move_outs/get_move_outs?status=pending'
 			});
 			var User = Backbone.Model.extend({
-				url: 'https://dev.sfrent.net/api/move_outs/get_move_outs?status=complete'
+				url: 'https://dev.sfrent.net/api/move_outs/get_move_outs?status=pending'
 			});
 
 			var UserList = Backbone.View.extend({
